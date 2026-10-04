@@ -22,11 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Carrusel de consultoría/normas: funciona con scroll nativo (táctil en
-  // móvil) y se puede navegar con las flechas, los puntos o el teclado
-  // (con foco en el carrusel). Al agregar nuevas tarjetas
-  // (<li class="carousel-slide">) no hay que tocar este código: los
-  // puntos y el rango de las flechas se recalculan solos.
+  // Carrusel de consultoría/normas
   document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
     var track = carousel.querySelector('[data-carousel-track]');
     var prevBtn = carousel.querySelector('[data-carousel-prev]');
@@ -125,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var lightboxPrev = document.getElementById('lightboxPrev');
     var lightboxNext = document.getElementById('lightboxNext');
     var currentIndex = 0;
+    var lastFocus = null;
 
     function openLightbox(index) {
       currentIndex = (index + galleryItems.length) % galleryItems.length;
@@ -132,15 +129,18 @@ document.addEventListener('DOMContentLoaded', function () {
       lightboxImg.src = item.getAttribute('data-full');
       lightboxImg.alt = item.getAttribute('data-caption') || '';
       lightboxCaption.textContent = item.getAttribute('data-caption') || '';
+      if (!lightbox.classList.contains('is-open')) lastFocus = document.activeElement;
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      if (lightboxClose) lightboxClose.focus();
     }
 
     function closeLightbox() {
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
     }
 
     galleryItems.forEach(function (item, index) {

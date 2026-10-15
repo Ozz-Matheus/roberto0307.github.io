@@ -813,7 +813,7 @@ img, svg { display: block; max-width: 100%; height: auto; }
 .footer-brand span { font-weight: 700; color: var(--white); }
 .footer-brand small { font-weight: 400; color: rgba(255,255,255,0.6); font-size: 0.7rem; }
 .footer-brand p { flex-basis: 100%; margin-top: 12px; font-size: 0.88rem; color: rgba(255,255,255,0.65); }
-.footer-col h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 12px; }
+.footer-col h3 { color: var(--white); font-size: 0.9rem; margin-bottom: 12px; }
 .footer-col p { margin-bottom: 6px; font-size: 0.9rem; color: rgba(255,255,255,0.82); }
 .footer-col a:hover { color: var(--gold-500); }
 .footer-col a { text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 3px; }
